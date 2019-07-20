@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>Responsive Functions</title>
+<style>
+body {
+    margin: 10%;
+}
+div {
+    width: 400px;
+    height: 300px;
+    padding: 15px;
+    display: none;
+    border-radius: 5%;
+    color: #fff;
+    font-size: 2.5rem;
+}
+#small {
+    background-color: #fc5d5d; /*red*/
+}
+#medium {
+    background-color: #ffe070; /*yelow*/
+}
+#large {
+    background-color: #9de08f; /*green*/
+}
+</style>
+    </head>
+    <body>
+        <h1>This is how I make my code responsive</h1>
+        <div id="small">You're using <strong>small</strong> screen device so this div has a red background</div>
+        <div id="medium">You're using<strong> medium</strong> screen device so this div has a yellow background</div>
+        <div id="large">You're using <strong>large</strong> screen device so this div has a green background</div>
+        <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script>
+  'use strict'
+var my_responsive_js = (function () {
+
+    function small () { // here you put all the functions for mobile
+        $('#small').fadeIn()
+    }
+    function medium () { // here you put all the functions for tablet
+        $('#medium').fadeIn()
+    }
+    function large () { // here you put all the functions for larger devices
+        $("#large").fadeIn()
+    }
+
+    function init () {
+
+        var width = $(window).width();
+
+        width < 768 ? small() : ( width > 992 ? large() : medium());
+        $("div").append("<p>The width is " + width + "px</p>");
+    }
+
+    return {
+        init: init
+    };
+})();
+
+$(document).ready(function () { 
+
+    my_responsive_js.init();
+
+});
+  </script>
+    </body>
+</html>
